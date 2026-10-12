@@ -1,15 +1,6 @@
 <?php
 require '../db_connect/db_connect.php';
 
-function createClient($pdo, $name, $email, $tel) {
-$stmt = $pdo -> prepare("INSERT INTO clients (name, email, tel)
-VALUES (:name, :email, :tel)");
-return $stmt-> execute([
-    'name' => $name,
-    'email' => $email,
-    'tel' => $tel
-]);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,10 +10,11 @@ return $stmt-> execute([
     <title>Добавление клиента</title>
 </head>
 <body>
+    <form method="post" action="/models/add_clients.php">
     <h1>Добавление клиента</h1>
-        <p>Имя: <input type="text name='name'"></p>        
-        <p>Email: <input type="text name='email'"></p>
-        <p>Телефон: <input type="text name='tel'"></p>
-<a href="/">Добавить</a>
-</body>
+        <p>Имя: <input type="text" name='name'></p>        
+        <p>Email: <input type="text" name='email'></p>
+        <p>Телефон: <input type="text" name='tel'></p>
+<button type="submit">Добавить</button></body>
+</form>
 </html>
