@@ -1,0 +1,7 @@
+<?php 
+// ДОБАВЛЕНИЕ
+function AddOrder() {
+    
+};
+
+ 
