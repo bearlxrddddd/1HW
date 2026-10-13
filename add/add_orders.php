@@ -17,25 +17,25 @@ require '../db_connect/db_connect.php';
     <title>Добавление заказа</title>
 </head>
 <body>
-    <form method="post" action="/models/add_clients.php">
+    <form method="post" action="/models/add_orders.php">
     <h1>Добавление заказа</h1>
         <p>Цена: <input type="number" name='price'></p>        
         <p>Покупатель: 
             <select name="client_id" id="client_id">
-            <?php foreach($clients as $client): ?>
-                <option value="<?php $client['id'] ?>"><?php htmlspecialchars($client['name']) ?></option>
+            <?php foreach($orders as $order): ?>
+                <option value="<?php $order['id'] ?>"><?php echo htmlspecialchars($order['client_id']) ?></option>
                 <?php endforeach; ?>
         </select>
     </p>
         <p>Статус:
             <select name="status" id="status">
                 <?php foreach($orders as $order): ?>
-                    <option value="<?php $order['status'] ?>"></option>
+                    <option value="active">active</option>
+                    <option value="passive">passive</option>
                     <?php endforeach; ?>
             </select>
         </p>
         <p>Дата: <input type="date" name='data'></p>
-
 <button type="submit">Добавить</button></body>
 </form>
 </html>

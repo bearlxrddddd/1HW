@@ -29,9 +29,9 @@ foreach ($clients as $client) :?>
     <th><?php echo $client['id'] ?></th>
         <th><?php echo $client['name'] ?></th>
         <th><a href="/delete/del_client.php">Удалить</a></th>
+<?php endforeach; ?>
 </tr>
 </table>
-<?php endforeach; ?>
 </form>
 </body>
 </html>

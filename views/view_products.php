@@ -13,22 +13,20 @@ require '../db_connect/db_connect.php';
 </head>
 <body>
     <h1> Продукты </h1>
-        <a href="/">Назад</a>
+        <a href="/">Назад</a><br>
                 <a href="/add/add_products.php">Добавить продукт</a>
-
-        <table>
+<table>
             <tr>
 <th> Имя </th>
 <th> Стоимость </th>
 <th> Действия </th>
-
-
-</tr>
+            </tr>
 <?php foreach ($products as $product) :?>
-    <?php echo '<tr><th>' . $product['title'] . "</th>" ?>
-        <?php echo '<th>' . $product['price'] . "</th>" ?>
-        <th><a href="/delete/del_product.php">Удалить</a></th>
-<tr>
+    <tr>
+    <?php echo '<th>' . $product['title'] . "</th>" ?>
+    <?php echo '<th>' . $product['price'] . "</th>" ?>
+<th><a href="/delete/del_product.php">Удалить</a></th>
+    </tr>
     <?php endforeach; ?>
 </table>
 </body>
