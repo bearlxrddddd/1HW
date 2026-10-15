@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_POST['categorie_id'])) {
+    throw new Exception('Не все данные переданы из формы');
+}
+
 $data = [
 'title' => $_POST['title'],
 'price' => $_POST['price'],

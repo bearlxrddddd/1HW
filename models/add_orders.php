@@ -1,9 +1,14 @@
 <?php
+
+if (!isset($_POST['client_id'])) {
+    throw new Exception('Не все данные переданы из формы');
+}
+
 $data = [
     "price" => $_POST['price'],
     "status" => $_POST['status'],
     "data" => $_POST['data'],
-    "client_id" => $_POST['client_id']
+    "client_id" => (int)$_POST['client_id']
 ];
 require "../db_connect/db_connect.php";
 

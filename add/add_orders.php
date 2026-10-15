@@ -1,13 +1,10 @@
 <?php 
 // ДОБАВЛЕНИЕ
+$status = ['active', 'passive'];
 require '../db_connect/db_connect.php';
     $stmt = $pdo->query("SELECT * FROM clients");
     $stmt ->execute();
     $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $stmt = $pdo->query("SELECT * FROM orders");
-    $stmt ->execute();
-    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,17 +19,15 @@ require '../db_connect/db_connect.php';
         <p>Цена: <input type="number" name='price'></p>        
         <p>Покупатель: 
             <select name="client_id" id="client_id">
-            <?php foreach($orders as $order): ?>
-                <option value="<?php $order['id'] ?>"><?php echo htmlspecialchars($order['client_id']) ?></option>
+            <?php foreach($clients as $client): ?>
+                <option value="<?php $client['id'] ?>"><?php echo htmlspecialchars($client['id']) ?></option>
                 <?php endforeach; ?>
         </select>
     </p>
         <p>Статус:
             <select name="status" id="status">
-                <?php foreach($orders as $order): ?>
                     <option value="active">active</option>
                     <option value="passive">passive</option>
-                    <?php endforeach; ?>
             </select>
         </p>
         <p>Дата: <input type="date" name='data'></p>

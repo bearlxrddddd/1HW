@@ -3,6 +3,11 @@ require '../db_connect/db_connect.php';
 $stmt = $pdo->query("SELECT * FROM products");
     $stmt ->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt = $pdo->query("SELECT * FROM categories");
+    $stmt ->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +23,8 @@ $stmt = $pdo->query("SELECT * FROM products");
         <p>Стоимость: <input type="number" name='price'></p>
         <p>Количество на складе: <input type="number" name='quantity_in_storage'></p>
         <p>Категория: <select name='categorie_id' id="categorie_id">
-            <?php foreach($products as $product): ?>
-        <option value="<?= $product['id'] ?>"><?php echo htmlspecialchars($product['categorie_id']) ?></option>
+            <?php foreach($categories as $categorie): ?>
+        <option value="<?= $categorie['id'] ?>"><?php echo htmlspecialchars($categorie['id']) ?></option>
 <?php endforeach; ?>
     </select>
 </p>
